@@ -1,0 +1,63 @@
+{
+  "name": "@oracle/content-management-sdk",
+  "description": "Oracle Content Management JavaScript SDK",
+  "author": "Oracle America, Inc.",
+  "version": "1.4.2",
+  "homepage": "https://github.com/oracle/content-management-sdk",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oracle/content-management-sdk.git"
+  },
+  "keywords": [
+    "cms",
+    "headless-cms",
+    "oracle-content-management",
+    "oracle-content-experience",
+    "oracle-cloud",
+    "javascript"
+  ],
+  "license": "UPL-1.0",
+  "source": "./src/content.js",
+  "main": "./dist/content.umd.js",
+  "exports": {
+    ".": "./dist/content.umd.js",
+    "./esm": "./dist/content.esm.js",
+    "./common": "./dist/content.modern.js",
+    "./umd": "./dist/content.umd.js",
+    "./modern": "./dist/content.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "LICENSE.txt",
+    "README.md",
+    "SECURITY.md",
+    "THIRD_PARTY_LICENSES_DEV.txt",
+    "dist/content.js",
+    "dist/content.js.map",
+    "dist/content.esm.js",
+    "dist/content.esm.js.map",
+    "dist/content.modern.js",
+    "dist/content.modern.js.map",
+    "dist/content.umd.js",
+    "dist/content.umd.js.map",
+    "dist/content.umd.min.js"
+  ],
+  "bugs": {
+    "url": "https://github.com/oracle/content-management-sdk/issues"
+  },
+  "scripts": {
+    "clean": "rm -rf dist",
+    "bundle": "microbundle --no-compress",
+    "minify": "uglifyjs dist/content.umd.js -c -o dist/content.umd.min.js",
+    "pack": "npm pack",
+    "build": "npm run bundle && npm run minify && npm run pack",
+    "publish": "npm publish --access public",
+    "localpub": "mkdir -p localpub && tar -xf *.tgz --directory localpub && pushd localpub/package && npm link && popd"
+  },
+  "devDependencies": {
+    "microbundle": "~0.13.0",
+    "uglify-js": "~3.13.5"
+  }
+}
